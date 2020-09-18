@@ -1,0 +1,60 @@
+<form class="form-horizontal" name="empList" id="empForm" ng-submit="save(perfil);">
+	<input type="hidden" name="id" class="form-control" ng-model="perfil.id"/>
+
+	<h2 class="text-left">{{titulo_formulario}}</h2>
+	<div class="row">
+		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="descricao">Descrição:</label>
+				<input id="descricao" type="text" name="descricao" class="form-control" ng-model="perfil.descricao" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="perfil.descricao.$invalid && perfil.descricao.$dirty">Descrição inválida!</p>
+			</div>
+		</div>
+
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="nivel">Nível:</label>
+				<input id="nivel" type="text" name="nivel" class="form-control" placeholder="" ng-model="perfil.nivel" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="perfil.nivel.$invalid && perfil.nivel.$dirty">Nível inválido!</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<button class="btn btn-success" ng-disabled="perfil.$invalid">Salvar</button>
+	</div>
+</form>
+
+
+<!-- Table to show employee detalis -->
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<thead class="thead-light">
+			<tr>
+				<th>ID</th>
+				<th>Descrição</th>
+				<th>Nível</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="perfil in perfis">
+				<td>
+					<span>{{perfil.id}}</span>
+				</td>
+				<td>{{perfil.descricao}}</td>
+				<td>{{perfil.nivel}}</td>
+				<td>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<button class="btn btn-danger btn-sm" ng-click="delete(perfil)" title="Delete"><i class="fa fa-trash"></i></button>
+						<button class="btn btn-primary btn-sm" ng-click="edit(perfil)" title="Edit"><i class="fa fa-pencil"></i></button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

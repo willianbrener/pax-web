@@ -1,0 +1,86 @@
+<h2 class="text-left">Lista de Atendimentos</h2>
+
+<div ng-hide="emAtendimento">
+    <!-- Table to show employee detalis -->
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nº</th>
+                    <th>Nome Pessoa</th>
+                    <th>CPF Pessoa</th>
+                    <th>Data Início</th>
+                    <th>Data Fechamento</th>
+                    <th>Usuário Atendimento</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="atendimento in atendimentos">
+                    <td>
+                        <span>{{atendimento.id}}</span>
+                    </td>
+                    <td>{{atendimento.nomePessoa}}</td>
+                    <td>{{atendimento.cpfPessoa}}</td>
+                    <td>{{atendimento.dataInicio | date:'dd/MM/yyyy hh:mm'}}</td>
+                    <td>{{atendimento.dataFechamento | date:'dd/MM/yyyy hh:mm'}}</td>
+                    <td>{{atendimento.nomeUsuarioAtendimento}}</td>
+                    <td>{{atendimento.descricaoCategoriaAtendimento}}</td>
+                    <td>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons" data-ng-if="!atendimento.dataFechamento">
+                            <button class="btn btn-primary btn-sm" ng-click="selecionaAtendimento(atendimento)" title="Selecionar">
+                                <i class="fa fa-phone"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div ng-show="emAtendimento">
+    <div class="col-sm-12">
+        <div class="chatbody">
+            <div class="panel panel-primary">
+                <div class="panel-heading top-bar">
+                    <div class="col-md-10 col-xs-10">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - {{atendimentoSelecionado.nomePessoa}}</h3>
+                    </div>
+                    <div class="col-md-2 col-xs-2" style="text-align: right;">
+                        <h3 class="panel-title">
+                            <button class="btn btn-danger btn-sm" data-ng-click="fecharAtendimento()" id="btn-fechar-chat">
+                                Fechar Atendimento
+                            </button>
+                        </h3>
+                    </div>
+                </div>
+                <div class="panel-body msg_container_base">
+                    <div  ng-repeat="mensagem in mensagens" ng-class="mensagem.tipoMensagem == 'C' ? 'row msg_container base_receive' : 'row msg_container base_sent'">
+                       <!-- <div data-ng-if="mensagem.tipoMensagem == 'C'" class="col-md-1 col-xs-1 avatar">
+                            <img src="../../resources/images/client.png">
+                        </div>-->
+                        <div class="col-md-6 col-xs-6">
+                            <div class="messages msg_receive">
+                                <p>{{mensagem.conteudo}}
+                                </p>
+                                <time>{{mensagem.tipoMensagem == 'C' ? atendimentoSelecionado.nomePessoa : 'Você'}} • {{mensagem.dataMensagem | date: 'dd/MM/yyyy hh:mm'}}</time>
+                            </div>
+                        </div>
+                        <!--<div data-ng-if="mensagem.tipoMensagem == 'A'" class="col-md-1 col-xs-1 avatar">
+                            <img src="../../resources/images/clerk.png" >
+                        </div>-->
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" data-ng-model="campoMensagem" type="text" class="form-control" placeholder="Escreva sua mensagem aqui..." />
+                        <span class="input-group-btn">
+						    <button class="btn btn-success" data-ng-click="enviaMensagem()" id="btn-chat"><i class="fa fa-send fa-1x" aria-hidden="true"></i></button>
+						</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

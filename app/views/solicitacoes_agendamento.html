@@ -1,0 +1,83 @@
+<h2 class="text-left" ng-show="!detalhamento">Solicitações de Exames/Consultas</h2>
+
+<form class="form-horizontal" name="empList" id="empForm" ng-submit="save(solicitacao);" ng-show="edicao">
+	<input type="hidden" name="id" class="form-control" ng-model="solicitacao.id"/>
+
+	<h2 class="text-left">Informações de Solicitação</h2>
+	<div class="row">
+		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="Name">CPF Solicitante:</label>
+				<input type="text" name="titulo" class="form-control" ng-model="solicitacao.cpfSolicitante" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="solicitacao.cpfSolicitante.$invalid && solicitacao.cpfSolicitante.$dirty">Título inválido!</p>
+			</div>
+		</div>
+
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="data">Data:</label>
+				<input type="text" name="data" date-picker-init class="form-control" placeholder="" ng-model="solicitacao.data" data-date-format="mm/dd/yyyy" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="solicitacao.data.$invalid && solicitacao.data.$dirty">Data inválida!</p>
+			</div>
+        </div>
+        
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="formaPagamento">Forma de Pagamento:</label>
+				<input type="text" name="formaPagamento" class="form-control" placeholder="" ng-model="solicitacao.formaPagamento" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="solicitacao.formaPagamento.$invalid && solicitacao.formaPagamento.$dirty">Descrição inválida!</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<button class="btn btn-success" ng-disabled="solicitacao.$invalid">{{!detalhamento ? 'Cadastrar' : 'Alterar'}}</button>
+		<button class="btn btn-danger" data-ng-click="cancelaEdicao()">{{'Cancelar'}}</button>
+	</div>
+</form>
+
+
+<!-- Table to show employee detalis -->
+<div class="table-responsive" ng-show="!detalhamento">
+	<table class="table table-bordered">
+		<thead class="thead-light">
+			<tr>
+				<th>ID</th>
+				<th>CPF Solicitante</th>
+                <th>Data</th>
+				<th>Médico</th>
+				<th>Especialidade</th>
+				<th>Status</th>
+				<th>Ações</th>
+				<th>Info</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="solicitacao in solicitacoes">
+				<td>
+					<span>{{solicitacao.id}}</span>
+				</td>
+				<td>{{solicitacao.cpfSolicitante}}</td>
+                <td>{{solicitacao.data | date: 'dd/MM/yyyy hh:mm'}}</td>
+				<td>{{solicitacao.medico}}</td>
+				<td>{{solicitacao.especialidade}}</td>
+				<td>{{solicitacao.status}}</td>
+				<td>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<button data-ng-if="solicitacao.status == 'PENDENTE'" class="btn btn-success btn-sm" ng-click="confirma(solicitacao)" title="Confirma"><i class="fa fa-check"></i></button>
+						<button data-ng-if="solicitacao.status == 'PENDENTE'" class="btn btn-danger btn-sm" ng-click="recusa(solicitacao)" title="Recusa"><i class="fa fa-times"></i></button>
+					</div>
+				</td>
+				<td>
+					<button class="btn btn-warning btn-sm" ng-click="detalhar(solicitacao)" title="Detalhamento"><i class="fa fa-info"></i></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

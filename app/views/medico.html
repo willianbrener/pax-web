@@ -1,0 +1,108 @@
+<form class="form-horizontal" name="empList" id="empForm" ng-submit="save(medico);">
+	<input type="hidden" name="id" class="form-control" ng-model="medico.id"/>
+
+	<h2 class="text-left">{{titulo_formulario}}</h2>
+	<div class="row">
+		<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="nome">Nome:</label>
+				<input id="nome" type="text" name="nome" class="form-control" ng-model="medico.nome" autofocus />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="medico.nome.$invalid && medico.nome.$dirty">Nome inválido!</p>
+			</div>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="telefone">Telefone:</label>
+				<input id="telefone" type="text" name="telefone" class="form-control" placeholder="" ng-model="medico.telefone" autofocus />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="medico.telefone.$invalid && medico.telefone.$dirty">Telefone inválido!</p>
+			</div>
+		</div>
+		
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="telefone">Especialidades:</label>
+				<multiselect class="input-xlarge" multiple="true"
+				ng-model="medico.especialidades"
+				options="e.descricao for e in especialidades"
+				header="Selecione um ou mais itens"
+				change="selected()" ></multiselect>
+			</div>
+		</div>
+		
+
+        
+	</div>
+	
+	<div class="form-group">
+		<button class="btn btn-success" ng-disabled="medico.$invalid">Salvar</button>
+	</div>
+</form>
+
+
+<!-- Table to show employee detalis -->
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<thead class="thead-light">
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+                <th>Telefone</th>
+                <th>Especialidades</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="medico in medicos">
+				<td>
+					<span>{{medico.id}}</span>
+				</td>
+				<td>{{medico.nome}}</td>
+                <td>{{medico.telefone}}</td>
+                <td>
+					<button class="btn btn-warning" ng-click="mostraEspecialidades(medico)" title="Especialidades"><i class="fa fa-list"></i></button>
+				</td>
+				<td>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<button class="btn btn-danger btn-sm" ng-click="delete(medico)" title="Delete"><i class="fa fa-trash"></i></button>
+						<button class="btn btn-primary btn-sm" ng-click="edit(medico)" title="Edit"><i class="fa fa-pencil"></i></button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<div class="modal fade" id="modalEspecialidades" tabindex="-1" role="dialog" aria-labelledby="modalEspecialidades">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalEspecialidadesLabel">Especialidades</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered">
+					<thead class="thead-light">
+					<tr>
+						<th>ID</th>
+						<th>Descrição</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="espec in especialidadesMedico">
+						<td>
+							<span>{{espec.id}}</span>
+						</td>
+						<td>{{espec.descricao}}</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

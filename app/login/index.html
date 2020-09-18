@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" data-ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login</title>
+
+        <!-- Font Awesome -->
+        <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="login.css" rel="stylesheet">
+
+        <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext" rel="stylesheet">
+
+    </head>
+    <body data-ng-controller="LoginController">
+        <div class="main-bg">
+            <!-- title -->
+            <h1>App PAX Admin</h1>
+            <!-- //title -->
+            <!---728x90--->
+
+            <div class="sub-main-w3">
+                <!-- vertical tabs -->
+                <div class="vertical-tab">
+                    <div id="section1" class="section-w3ls">
+                        <input type="radio" name="sections" id="option1" checked="">
+                        <label for="option1" class="icon-left-w3pvt"><span class="fa fa-user-circle" aria-hidden="true"></span>Acessar</label>
+                        <article>
+                            <form action="#" method="post">
+                                <h3 class="legend">Autenticação</h3>
+                                <div class="input">
+                                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                    <input type="text" data-ng-model="autenticacao.cpf" placeholder="CPF" name="cpf" required="">
+                                </div>
+                                <div class="input">
+                                    <span class="fa fa-key" aria-hidden="true"></span>
+                                    <input type="password" data-ng-model="autenticacao.senha" placeholder="Senha" name="senha" required="">
+                                </div>
+                                <button type="button" data-ng-click="autenticar()" class="btn submit">Confirmar</button>
+                                <a href="#" class="bottom-text-w3ls">Esqueceu sua senha?</a>
+                            </form>
+                        </article>
+                    </div>
+                    <div id="section2" class="section-w3ls">
+                        <input type="radio" name="sections" id="option2">
+                        <label for="option2" class="icon-left-w3pvt"><span class="fa fa-pencil-square" aria-hidden="true"></span>Registrar</label>
+                        <article>
+                            <form action="#" method="post">
+                                <h3 class="legend">Registre-se aqui</h3>
+                                <div class="input">
+                                    <span class="fa fa-user-o" aria-hidden="true"></span>
+                                    <input type="text" placeholder="Nome" name="nome" required="">
+                                </div>
+                                <div class="input">
+                                    <span class="fa fa-user-o" aria-hidden="true"></span>
+                                    <input type="text" placeholder="CPF" name="cpf" required="">
+                                </div>
+                                <div class="input">
+                                    <span class="fa fa-user-o" aria-hidden="true"></span>
+                                    <input type="email" placeholder="Email" name="email" required="">
+                                </div>
+                                <div class="input">
+                                    <span class="fa fa-key" aria-hidden="true"></span>
+                                    <input type="password" placeholder="Senha" name="senha" required="">
+                                </div>
+                                <div class="input">
+                                    <span class="fa fa-key" aria-hidden="true"></span>
+                                    <input type="password" placeholder="Confirme sua senha" name="senha" required="">
+                                </div>
+                                <button type="button" class="btn submit">Registrar</button>
+                            </form>
+                        </article>
+                    </div>
+                    <div id="section3" class="section-w3ls">
+                        <input type="radio" name="sections" id="option3">
+                        <label for="option3" class="icon-left-w3pvt"><span class="fa fa-lock" aria-hidden="true"></span>Esqueceu sua senha?</label>
+                        <article>
+                            <form action="#" method="post">
+                                <h3 class="legend last">Resetar senha</h3>
+                                <p class="para-style">Digite seu endereço de e-mail abaixo e enviaremos um e-mail com instruções.</p>
+                                <div class="input">
+                                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                    <input type="email" placeholder="Email" name="email" required="">
+                                </div>
+                                <button type="button" class="btn submit last-btn">Resetar</button>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+                <!-- //vertical tabs -->
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <!-- AngularJS -->
+        <script src="../vendor/angular/angular.min.js"></script>
+        <script src="../vendor/angular/angular-cookie.js"></script>
+
+
+        <script src="login.js"></script>
+
+    </body>
+</html>

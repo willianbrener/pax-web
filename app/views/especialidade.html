@@ -1,0 +1,48 @@
+<form class="form-horizontal" name="empList" id="empForm" ng-submit="save(especialidade);">
+	<input type="hidden" name="id" class="form-control" ng-model="especialidade.id"/>
+
+	<h2 class="text-left">{{titulo_formulario}}</h2>
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="descricao">Descrição:</label>
+				<input id="descricao" type="text" name="descricao" class="form-control" ng-model="especialidade.descricao" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="especialidade.descricao.$invalid && especialidade.descricao.$dirty">Descrição inválida!</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<button class="btn btn-success" ng-disabled="especialidade.$invalid">Salvar</button>
+	</div>
+</form>
+
+
+<!-- Table to show employee detalis -->
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<thead class="thead-light">
+			<tr>
+				<th>ID</th>
+				<th>Descrição</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="especialidade in especialidades">
+				<td>
+					<span>{{especialidade.id}}</span>
+				</td>
+				<td>{{especialidade.descricao}}</td>
+				<td>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<button class="btn btn-danger btn-sm" ng-click="delete(especialidade)" title="Delete"><i class="fa fa-trash"></i></button>
+						<button class="btn btn-primary btn-sm" ng-click="edit(especialidade)" title="Edit"><i class="fa fa-pencil"></i></button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

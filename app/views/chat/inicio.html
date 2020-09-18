@@ -1,0 +1,27 @@
+<form class="form-horizontal">
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label for="Name">Nome:</label>
+                        <input type="text" name="descricao" class="form-control" ng-model="usuarioChat.nome" autofocus required />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label for="categoriaAtendimento">Categoria de Atendimento:</label>
+                        <select id="categoriaAtendimento" name="categoriaAtendimento" class="form-control" >
+                            <option value=""></option>
+                            <option value="Categoria 01">Categoria 01</option>
+                            <option value="Categoria 02">Categoria 02</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" type="button" data-ng-click="entrarChat()">Entrar</button>
+            </div>
+        </div>
+    </div>
+</form>

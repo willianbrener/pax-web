@@ -1,0 +1,24 @@
+{
+    "name": "angular-restful-auth",
+    "version": "0.0.1",
+    "description": "",
+    "main": "client.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon client.js",
+        "dev": "nodemon client.js",
+        "production": "pm2 start client.js --name frontend",
+        "stop": "pm2 stop frontend"
+    },
+    "dependencies": {
+        "express": "4.x",
+        "body-parser": "~1.0.0",
+        "morgan": "latest",
+        "mongoose": "3.8.8",
+        "express-jwt": "0.2.1",
+        "jsonwebtoken": "0.4.0"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    }
+}

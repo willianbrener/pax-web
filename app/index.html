@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>App Admin</title>
+
+		<!-- Bootstrap -->
+		<link href="vendor/bootstrap/bootstrap.css" rel="stylesheet">
+		<!-- Font Awesome -->
+		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<!-- NProgress -->
+		<link href="vendor/nprogress/nprogress.css" rel="stylesheet">
+		<!-- iCheck -->
+		<link href="vendor/iCheck/skins/flat/green.css" rel="stylesheet">
+		<!-- bootstrap-progressbar -->
+		<link href="vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+		<!-- bootstrap-daterangepicker -->
+		<link href="vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+		<!-- bootstrap-datepicker -->
+		<link href="vendor/datepicker/css/datepicker.css" rel="stylesheet">
+
+		<!-- Custom styles for this template-->
+		<link href="build/css/custom.css" rel="stylesheet">
+
+		<link href="resources/css/chat-custom.css" rel="stylesheet">
+
+		<!-- Angular Libs -->
+		<link rel="stylesheet" href="/lib/loading-bar.css">
+		<link href="vendor/angular/angular-multiselect.css" rel="stylesheet">
+	</head>
+	<body class="nav-md footer_fixed">
+
+		<div class="container body">
+			<div class="main_container">
+
+
+				<!-- Menu -->
+				<div class="col-md-3 left_col" data-ng-controller="SidebarController">
+					<div class="left_col scroll-view">
+						<div class="navbar nav_title" style="border: 0;">
+							<a href="#" class="site_title"> <span>PAX PRIMAVERA</span></a>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<br />
+
+						<!-- sidebar menu -->
+						<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+							<div class="menu_section">
+								<ul class="nav side-menu">
+
+									<div class="liactive">
+										<span class="nav-link">Atendimento</span>
+									</div>
+
+									<li class="nav-item">
+										<a class="nav-link" ng-href="#/chat">
+											<img src="/resources/images/chat.png" width="24" height="24">
+											<span>Chat</span></a>
+									</li>
+
+									<div class="liactive">
+										<span class="nav-link">Solicitações</span>
+									</div>
+
+									<li  class="nav-item"><!-- data-ng-show="token" -->
+										<a class="nav-link" ng-href="#/solicitacoes_pagamentos">
+											<img src="/resources/images/pagamento.png" width="24" height="24">
+											<span>Solicitações de Pagamento</span></a>
+									</li>
+
+									<li  class="nav-item"><!-- data-ng-show="token" -->
+										<a class="nav-link" ng-href="#/solicitacoes_agendamentos">
+											<img src="/resources/images/agendamento.png" width="24" height="24">
+											<span>Solicitações de Agendam.</span></a>
+									</li>
+
+
+									<hr class="sidebar-divider my-0">
+
+
+									<div class="liactive">
+										<span class="nav-link">Cadastros</span>
+									</div>
+
+
+									<li  class="nav-item"><!-- data-ng-show="token" -->
+										<a class="nav-link" ng-href="#/perfil">
+											<img src="/resources/images/perfil.png" width="24" height="24">
+											<span>Perfis</span></a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" ng-href="#/usuario">
+											<img src="/resources/images/usuario.png" width="24" height="24">
+											<span>Usuarios</span></a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" ng-href="#/convenio">
+											<img src="/resources/images/convenio.png" width="24" height="24">
+											<span>Convenios</span></a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" ng-href="#/especialidade">
+											<img src="/resources/images/especialidade.png" width="24" height="24">
+											<span>Especialidades</span></a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" ng-href="#/medico">
+											<img src="/resources/images/medico.png" width="24" height="24">
+											<span>Medicos</span></a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" ng-href="#/categoriaAtendimento">
+											<img src="/resources/images/categoriaatendimento.png" width="24" height="24">
+											<span>Categorias de Atendimento</span></a>
+									</li>
+
+									<li class="nav-item">
+										<a class="nav-link" ng-href="#/evento">
+											<img src="/resources/images/evento.png" width="24" height="24">
+											<span>Eventos</span></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- /sidebar menu -->
+
+						<!-- /menu footer buttons -->
+						<div class="sidebar-footer hidden-small">
+							<a data-toggle="tooltip" data-placement="top" title="Configurações">
+								<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+							</a>
+							<a data-toggle="tooltip" data-placement="top" title="FullScreen">
+								<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+							</a>
+							<a data-toggle="tooltip" data-placement="top" title="Travar">
+								<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+							</a>
+							<a data-toggle="tooltip" data-placement="top" title="Sair" data-ng-click="logout()">
+								<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+							</a>
+						</div>
+						<!-- /menu footer buttons -->
+					</div>
+				</div>
+
+
+				<!-- top navigation -->
+				<div class="top_nav" data-ng-controller="TabController">
+					<div class="nav_menu">
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+						<nav class="nav navbar-nav">
+							<ul class=" navbar-right">
+								<li class="nav-item dropdown open" style="padding-left: 15px;">
+									<a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+										<img src="resources/images/img.jpg" alt="">{{nomeUsuarioLogado}}
+									</a>
+									<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item"  href="javascript:;">Perfil</a>
+										<a class="dropdown-item"  href="javascript:;">Configurações</a>
+										<a class="dropdown-item"  href="javascript:;" data-ng-click="logout()"><i class="fa fa-sign-out pull-right"></i> Sair</a>
+									</div>
+								</li>
+
+								<li role="presentation" class="nav-item dropdown open">
+									<a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
+										<i class="fa fa-envelope-o"></i>
+										<span class="badge bg-green">6</span>
+									</a>
+									<ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+										<li class="nav-item">
+											<a class="dropdown-item">
+												<span class="image"><img src="resources/images/img.jpg" alt="Profile Image" /></span>
+												<span>
+										  <span>John Smith</span>
+										  <span class="time">3 mins ago</span>
+										</span>
+												<span class="message">
+										  Film festivals used to be do-or-die moments for movie makers. They were where...
+										</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="dropdown-item">
+												<span class="image"><img src="resources/images/img.jpg" alt="Profile Image" /></span>
+												<span>
+										  <span>John Smith</span>
+										  <span class="time">3 mins ago</span>
+										</span>
+												<span class="message">
+										  Film festivals used to be do-or-die moments for movie makers. They were where...
+										</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="dropdown-item">
+												<span class="image"><img src="resources/images/img.jpg" alt="Profile Image" /></span>
+												<span>
+										  <span>John Smith</span>
+										  <span class="time">3 mins ago</span>
+										</span>
+												<span class="message">
+										  Film festivals used to be do-or-die moments for movie makers. They were where...
+										</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="dropdown-item">
+												<span class="image"><img src="resources/images/img.jpg" alt="Profile Image" /></span>
+												<span>
+										  <span>John Smith</span>
+										  <span class="time">3 mins ago</span>
+										</span>
+												<span class="message">
+										  Film festivals used to be do-or-die moments for movie makers. They were where...
+										</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<div class="text-center">
+												<a class="dropdown-item">
+													<strong>See All Alerts</strong>
+													<i class="fa fa-angle-right"></i>
+												</a>
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!-- /top navigation -->
+
+
+				<!-- Main Content-->
+				<div class="right_col" role="main" ng-view="" style="min-height:99%">
+				</div>
+				<!-- End of Main Content -->
+
+
+				<!-- Footer -->
+				<footer>
+					<div class="pull-right"> Copyright © Pax Primavera 2019
+					</div>
+					<div class="clearfix"></div>
+				</footer>
+				<!-- End of Footer -->
+			</div>
+		</div>
+
+		<!-- jQuery -->
+		<script src="vendor/jquery/jquery.js"></script>
+
+		<script src="vendor/datepicker/js/datepicker.js"></script>
+		<script src="vendor/datepicker/js/datepicker.pt-BR.js"></script>
+		
+		<script src="vendor/bootstrap/bootstrap.bundle.js"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="vendor/jquery-easing/jquery.easing.js"></script>
+		<!-- Custom scripts for all pages-->
+		<script src="resources/js/sb-admin-2.js"></script>
+		<!-- Page level plugins -->
+		<script src="vendor/chart.js/Chart.js"></script>
+		<script src="vendor/angular/angular.min.js"></script>
+		<script src="vendor/angular/angular-route.min.js"></script>
+		<script src="vendor/angular/angular-dirPagination.js"></script>
+		<script src="vendor/angular/angular-multiselect.js"></script>
+		<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+		<script src="vendor/angular/angular-cookie.js"></script>
+
+		<!-- ANGULAR LIBS -->
+		<script src="/lib/ngStorage.js"></script>
+		<script src="/lib/loading-bar.js"></script>
+
+		<!-- Moment -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.0-beta.6/angular-moment.min.js"></script>
+	
+		<!-- Socket.io -->
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+	
+		<!-- Firebase -->
+		<script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+		
+		<!-- ANGULAR CONFIG -->
+		<script src="app.js"></script>
+		<!-- ANGULAR CONTROLLERS -->
+		<script src="/controllers/TabController.js"></script>
+		<script src="/controllers/SidebarController.js"></script>
+		<script src="/controllers/ProfileController.js"></script>
+		<script src="/controllers/CategoriaAtendimentoController.js"></script>
+		<script src="/controllers/EspecialidadeController.js"></script>
+		<script src="/controllers/ConvenioController.js"></script>
+		<script src="/controllers/MedicoController.js"></script>
+		<script src="/controllers/PerfilController.js"></script>
+		<script src="/controllers/UsuarioController.js"></script>
+		<script src="/controllers/EventoController.js"></script>
+		<script src="/controllers/ChatController.js"></script>
+		<script src="/controllers/SolicitacoesPagamentoController.js"></script>
+		<script src="/controllers/SolicitacoesAgendamentoController.js"></script>
+		
+		<!-- ANGULAR SERVICES -->
+		<script src="/services/AuthenticationService.js"></script>
+		<script src="/services/FirebaseService.js"></script>
+		<script src="/services/SocketService.js"></script>
+		<script src="/services/LoginService.js"></script>
+
+		<!-- Custom Theme Scripts -->
+		<script src="build/js/custom.js"></script>
+	</body>
+</html>

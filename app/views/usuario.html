@@ -1,0 +1,74 @@
+<form class="form-horizontal" name="empList" id="empForm" ng-submit="save(usuario);">
+	<input type="hidden" name="id" class="form-control" ng-model="usuario.id"/>
+
+	<h2 class="text-left">{{titulo_formulario}}</h2>
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="Name">Nome:</label>
+				<input type="text" name="nomeUsuario" class="form-control" ng-model="usuario.nome" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="usuario.nome.$invalid && usuario.nome.$dirty">Nome inválido!</p>
+			</div>
+		</div>
+
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="nome_usuario">Nome de usuario:</label>
+				<input type="text" name="nome_usuarioUsuario" class="form-control" placeholder="" ng-model="usuario.nome_usuario" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="usuario.nome_usuario.$invalid && usuario.nome_usuario.$dirty">Nome de usuário inválido!</p>
+			</div>
+		</div>
+
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<label for="senha">Senha:</label>
+				<input type="password" name="senhaUsuario" class="form-control" placeholder="" ng-model="usuario.senha" autofocus required />
+			</div>
+			<div class="form-group">
+				<p class="text-danger" ng-show="usuario.senha.$invalid && usuario.senha.$dirty">Senha inválida!</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<button class="btn btn-success" ng-disabled="usuario.$invalid">Salvar</button>
+	</div>
+</form>
+
+
+<!-- Table to show employee detalis -->
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<thead class="thead-light">
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Nome de Usuario</th>
+				<th>Senha</th>
+				<th>Perfil</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="u in usuarios">
+				<td>
+					<span>{{u.id}}</span>
+				</td>
+				<td>{{u.nome}}</td>
+				<td>{{u.nome_usuario}}</td>
+				<td>{{u.senha}}</td>
+				<td>{{u.perfil_id}}</td>
+				<td>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<button class="btn btn-danger btn-sm" ng-click="delete(u)" title="Delete"><i class="fa fa-trash"></i></button>
+						<button class="btn btn-primary btn-sm" ng-click="edit(u)" title="Edit"><i class="fa fa-pencil"></i></button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
